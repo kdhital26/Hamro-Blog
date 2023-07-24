@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+img {
+    border-radius: 9px;
+}
+
+.w-90 {
+    width: 90%;
+}
+
+
+// .hamro-blog-main-img {
+//     img{
+//         display: block;
+//         margin-left: auto;
+//         margin-right: auto;
+//         width: 75%;
+//     }
+// }
