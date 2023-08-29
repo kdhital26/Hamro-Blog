@@ -1,0 +1,30 @@
+.image-container {
+    max-width: 200px;
+    max-height: 200px;
+}
+.image-container img {
+    object-fit: contain;
+    width: 150px;
+    height: 100px;
+}
+
+.hb_action-type{
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.hb_action-type span:nth-child(1){
+    color: red;
+    cursor: pointer;
+
+}
+
+.hb_action-type span:nth-child(2){
+    color: rgba(30, 30, 236, 0.619);
+    cursor: pointer;
+    margin-left: 10px;
+
+}
+

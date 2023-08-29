@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChildComponentComponent } from './child-component/child-component.component';
+import { MainModule } from '../app/components/main.module';
 import { HomeComponent } from './home/home.component';
+import { CommonBlogComponent } from './shared/common-blog/common-blog.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'child-component', component: ChildComponentComponent},
+  {path: 'shared', component: CommonBlogComponent},
+  {
+    path: 'blog',
+    loadChildren: () => import('../app/shared/shared.module').then(m => m.SharedModule)
+  },
+  {
+    path: 'add-blog',
+    loadChildren: () => import('../app/components/main.module').then(m => m.MainModule)
+  },
   {path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

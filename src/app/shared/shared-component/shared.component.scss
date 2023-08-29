@@ -1,0 +1,59 @@
+$hover-color:#116D6E;
+
+.main-container {
+    img {
+        object-fit: contain;
+    }
+    .hamro-blog-heading, img, section {
+        cursor: pointer;
+    }
+
+    .hamro-blog-heading:hover{
+        // color: rgb(0, 102, 255);
+        color: $hover-color
+    }
+
+    .vr{
+        border-left: 1px solid #aeaeae;
+        height: 100%;
+    }
+
+    .right-0{
+        right: 0;
+        label{
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .topic-lable{
+            // font-family: monospace;
+        }
+        .topic-container {
+            label{
+                font-weight: 800;
+                font-size: 16px;
+            }
+            label:hover{
+                color: $hover-color;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+           
+        }
+
+      
+    }
+
+    .topic-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        width: 97%;
+        margin: auto;
+        margin-top:7px;
+        grid-gap: 7px;
+    }
+
+
+}

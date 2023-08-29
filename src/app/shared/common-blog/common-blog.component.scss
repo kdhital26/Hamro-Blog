@@ -1,0 +1,67 @@
+.main-container {
+    img {
+        object-fit: contain;
+    }
+
+    .hb__comments {
+        width: 90%;
+        height: 120px;
+    }
+    .hb__star {
+        display: flex;
+        font-size: 30px;
+        text-align: center;
+        justify-content: center;
+        max-width: 90%;
+        margin: -25px 0px 30px 0px;
+        padding: 13px;
+        gap: 11px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .fa.fa-star{
+        color:#3fa729;
+    }
+
+    .hb__hr{
+        margin:4rem 0px;
+    }
+
+    .hb__comment-container{
+    margin: 14px;
+    padding: 20px;
+    background: #ffffff;
+    border: none;
+    border-radius: 7px;
+    overflow: hidden;
+    width: 96%;
+    box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.2);
+    }
+
+    .hb__cc{
+    background: #f7f7f7;
+    margin: 0x;
+    margin: 0px;
+    width: 90%;
+    padding: 20px;
+    }
+
+    .hb__comment-created{
+    display: grid;
+    gap: 5px;
+    color: #337CCF;
+    font-size: 14px;
+    }
+
+    .l1{
+        margin:7px 0px 0px 18px;
+    }
+
+    .hb-textarea textarea {
+        background-color: #f7f7f7;
+        border: none;
+        overflow: hidden;
+    }
+  
+}   

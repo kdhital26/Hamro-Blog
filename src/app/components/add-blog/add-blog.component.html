@@ -1,0 +1,38 @@
+<form>
+    <div class="container d-flex main-wrapper">
+    <app-button [btnLable]="'Back'" [addClass]="'pull-right'" (eventEmit)="back()" ></app-button>
+
+        <div>
+            <label for="heading">Title</label>
+            <input type="text" placeholder="Add Title..." [ngClass]="{'border border-danger': titleValidation}" name="title" [(ngModel)]="blogModel.title" class="form-control" name="Title" />
+        </div>
+        <div>
+            <app-button (eventEmit)="addSection()" [btnLable]="'Add Section'"></app-button>
+
+        </div>
+        <ng-container *ngFor="let data of blogData; let i = index">
+            <div *ngIf="!data.file" class="hb_image-type" (click)="file.click()">
+                <div class="d-flex flex-direction">
+                    <input (change)="selectFiles($event, i)" type="file" hidden accept=".img,.png,.jpeg,.jpg,.webp" id="fileID" style="display:none;" #file>
+                    <app-button #upload [btnLable]="'Choose File'" [style]="{width: '277px'}"></app-button>
+
+                    <small class="text-muted">Please upload image having height: 420px width: 740px</small>
+                </div>
+            </div>
+            <div *ngIf="data.file">
+                <div *ngIf="!data.file?.includes('src/uploads')" (click)="removeImg(i)" class="d-flex justify-content-end display-x"><span>X</span></div>
+                <!-- <img *ngIf="updatedBlogData._id" width="1300" height="400" class="w-100" [src]="filePath + data.file" /> -->
+                <img  width="1300" height="400" class="w-100" [src]="data.file.includes('src/uploads') ? filePath + data.file : data.file" /> 
+            </div>
+            <div class="ckeditior-items">
+                <label for="description">Description</label>
+                <ckeditor name="description-{{i}}" [(ngModel)]="data.description" [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+            </div>
+        </ng-container>
+    
+       
+        <app-button [addClass]="'mb-3'" (eventEmit)="addBlog($event)" [style]="{'width': '100%'}" [btnLable]="blogModel._id ? 'Update Blog' : 'Add Blog'"></app-button>
+    </div>
+</form>
+
+

@@ -1,0 +1,58 @@
+.main-wrapper {
+    max-width: 1000px;
+    gap: 9px;
+    flex-direction: column;
+
+    .hb_image-type {
+        width: 100%;
+        border: 2px dotted #908b8b6e;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 7px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    img {
+         object-fit: fill;
+    }
+
+    .display-x span {
+        background: red;
+        border-radius: 50%;
+        border: 2px solid red;
+        padding: 0px;
+        width: 25px;
+        margin: 0px;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+        top: 15px;
+        left: 8px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .flex-direction {
+        flex-direction: column;
+        gap: 9px;
+
+        small {
+            font-size: 10px;
+            text-align: center;
+        }
+    }
+
+
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 300px;
+    // background-color: #f7f7f7 !important;
+}
+
+::ng-deep .ck-balloon-panel_visible {
+    visibility: hidden !important;
+}

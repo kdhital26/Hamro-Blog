@@ -1,0 +1,50 @@
+$base-color: #468B97;
+
+
+.footer-wrapper{
+    background-color: $base-color;
+   //background-color: #203787 !important;
+}
+
+
+button :hover{
+   color: none !important; 
+}
+
+hr {
+   border: 1px solid #ffffff;
+   opacity: 1;
+}
+
+button {
+   color: #fff;
+   display: flex;
+   align-items: center;
+}
+
+.col-auto button span {
+   font-size: 30px;
+   line-height: 15px;
+   margin-left: 5px;
+   margin-top: -5px;
+
+}
+
+.btn-outline-light a {
+   text-decoration: none;
+   color: #FFFFFF !important;
+   transition: 0.5s ease-in;
+}
+
+.btn-outline-light a:hover{
+   text-decoration: none;
+   color: #000000 !important;
+}
+
+.abs-addres-section > p {
+   line-height: 8px;
+}
+
+.abs-addres-section p > i {
+   font-size: 1.25em;
+}

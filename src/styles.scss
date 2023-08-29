@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    // font-family: sans-serif;
 }
 
 img {
@@ -14,12 +15,9 @@ img {
     width: 90%;
 }
 
+input[type=text]{
+    background-color: #f7f7f7;
+    overflow: hidden;
+}
 
-// .hamro-blog-main-img {
-//     img{
-//         display: block;
-//         margin-left: auto;
-//         margin-right: auto;
-//         width: 75%;
-//     }
-// }
+

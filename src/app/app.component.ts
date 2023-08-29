@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { CommonServiceService } from './common-service.service';
 
 @Component({
   selector: 'app-root',
@@ -13,27 +12,16 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy  {
 
   
   constructor(
-    private commonService: CommonServiceService //inject
   ) {
   }
 
 //call initial phase
   ngOnInit() {
-    this.jsonData = this.commonService.getJsonData();
-    this.title = this.commonService.getTitle();
   }
 
   ngAfterViewInit() {
   }
-  visibility: boolean = false;
-  setMouseEnter() {
-    console.log('test');
-    this.visibility = true;
-  }
 
-  setMouseLeave(event: any) {
-    this.visibility = false;
-  }
 
   ngOnDestroy(): void {
     
