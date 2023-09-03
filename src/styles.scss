@@ -1,10 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Montserrat-Italic';
+    src: url('assets/fonts/Montserrat/static/Montserrat-Italic.ttf');
+    font-style: 100;
+}
+
+@font-face {
+    font-family: 'Montserrat-Extralight';
+    src: url('assets/fonts/Montserrat/static/Montserrat-ExtraLight.ttf');
+    font-style: 200;
+}
+
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url('assets/fonts/Montserrat/static/Montserrat-Light.ttf');
+    font-style: 300;
+}
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('assets/fonts/Montserrat/static/Montserrat-Regular.ttf');
+    font-style: 400;
+}
+
+@font-face {
+    font-family: 'Montserrat-Semibold';
+    src: url('assets/fonts/Montserrat/static/Montserrat-Medium.ttf');
+    font-style: 600;
+}
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('assets/fonts/Montserrat/static/Montserrat-Bold.ttf');
+    font-style: 700;
+}
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    // font-family: sans-serif;
+    font-family: 'Montserrat-Semibold', sans-serif;
 }
 
 img {
@@ -18,6 +54,10 @@ img {
 input[type=text]{
     background-color: #f7f7f7;
     overflow: hidden;
+}
+
+strong {
+    font-family: 'Montserrat-Bold';
 }
 
 

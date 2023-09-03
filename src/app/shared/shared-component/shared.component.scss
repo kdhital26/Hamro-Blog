@@ -1,15 +1,18 @@
 $hover-color:#116D6E;
 
+
 .main-container {
+    h2{
+        font-family: 'Montserrat-Semibold';
+    }
     img {
-        object-fit: contain;
+        object-fit: cover;
     }
     .hamro-blog-heading, img, section {
         cursor: pointer;
     }
 
     .hamro-blog-heading:hover{
-        // color: rgb(0, 102, 255);
         color: $hover-color
     }
 
@@ -20,40 +23,75 @@ $hover-color:#116D6E;
 
     .right-0{
         right: 0;
+        position: sticky;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        overflow: auto;
         label{
-            font-size: 15px;
-            font-weight: 700;
+            font-family: 'Montserrat-Bold';
+            font-weight: 500;
         }
-        .topic-lable{
-            // font-family: monospace;
-        }
+
         .topic-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            width: 97%;
+            margin: auto;
+            margin-top:7px;
+            grid-gap: 3px;
             label{
-                font-weight: 800;
-                font-size: 16px;
+                font-family: 'Montserrat-Semibold';
+                font-weight: 600;
+                font-size: 14px;
+                color: gray;
+                text-align: center;
             }
             label:hover{
                 color: $hover-color;
                 text-decoration: underline;
                 cursor: pointer;
             }
-           
-        }
+            & img{
+                width: 30%;
+                border-radius: inherit;
+            }
+            & .lb{
+                display: flex;
+                gap:4px;
 
-      
+            }
+        }
     }
 
-    .topic-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        align-items: center;
-        width: 97%;
-        margin: auto;
-        margin-top:7px;
-        grid-gap: 7px;
+    .hb-lt__wrapper{
+        gap: 6px;
+        & label{
+            color: rgb(58, 57, 57) !important;
+        }
+    }
+
+    .hb__list-block{
+        display: grid;
+        place-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap:14px;
+        padding: 12px 10px 0px 10px;
+        & .li{
+            font-family: 'Montserrat-Regular';
+            padding: 8px 15px;
+            background: rgb(242, 242, 242);
+            border-radius: 20px;
+            text-align: center;
+            line-height: 19px;
+            margin: 0px;
+            cursor: pointer;
+        }
     }
 
 
 }
+

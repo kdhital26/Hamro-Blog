@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { debounce, debounceTime, forkJoin, Subject, take, takeUntil } from 'rxjs';
 import { AddBlogService } from 'src/app/components/services/add-blog.service';
 import { environment } from 'src/environments/environment';
+import { CommenModel } from '../model/common.model';
 
 @Component({
   selector: 'app-shared',
@@ -14,15 +15,17 @@ export class SharedComponent implements OnInit {
   public destroye$ = new Subject<any>();
   public blogList: any[] = [];
   public filePath: string = environment.filePath;
+  public commonModel = new CommenModel();
   constructor(
     private route: Router,
     private activateRoute: ActivatedRoute,
     private addBlogService: AddBlogService,
   ) { }
   blogContent: any[] = []
+  latestTopic: any[] = []
   ngOnInit(): void {
+
     this.getAllBlogs();
-    this.getAllTopic();
   }
 
   /*
@@ -38,7 +41,8 @@ export class SharedComponent implements OnInit {
         data[i].imagePath = data[i].file.split(',');
       }
       this.blogList = data;
-
+      this.getAllTopic();
+      this.getLatesTopic();
     }, error => {
       console.log(error);
     })
@@ -54,12 +58,23 @@ export class SharedComponent implements OnInit {
     })
    }
 
-   loadData(value: any, type?: string) {
-    console.log(value);
+   getLatesTopic() {
+      this.addBlogService.getLatestTopic(this.commonModel)
+      .pipe(takeUntil(this.destroye$))
+      .subscribe(result => {
+        this.loadData(result, 'getLatest')
+      }, error => {
+        this.loadError(error);
+      })
+   }
 
+   loadData(value: any, type?: string) {
+    let { body: {data} } = value;
     if(type === 'trendingTopic') {
-      let { body: {data} } = value;
       this.blogContent = data;
+    } else if(type === 'getLatest') {
+      this.latestTopic = data;
+      console.log(this.latestTopic, 'top')
     }
    }
 

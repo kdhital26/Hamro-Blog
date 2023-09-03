@@ -32,7 +32,6 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   ) {
    }
 
-
   ngOnInit(): void {
   }
 

@@ -15,6 +15,7 @@ export class AddBlogService {
   readonly createCommentsUrl: string = `${environment.apiUrl}createComment`;
   readonly getAllRatingUrl: string = `${environment.apiUrl}getAllRating`;
   readonly getAllTrendingTopicUrl: string = `${environment.apiUrl}getAllTrendingTopic`;
+  readonly getLatesTopicUrl: string = `${environment.apiUrl}getLatest`;
   
   constructor(
     private http: HttpClient
@@ -50,6 +51,11 @@ export class AddBlogService {
    return this.http.post(this.deleteBlogUrl, formData, {observe: 'response'});
   }
 
+  getIPAddress()
+  {
+    return this.http.get("http://api.ipify.org/?format=json");
+  }
+
   getAllBlogs() {
     return this.http.get(this.getAllBlogUrl, {observe: 'response'});
   }
@@ -74,6 +80,10 @@ export class AddBlogService {
 
   getAllTrendingTopic() {
     return this.http.get(this.getAllTrendingTopicUrl, {observe: 'response'});
+  }
+
+  getLatestTopic(commonModel: any) {
+    return this.http.post(this.getLatesTopicUrl, commonModel, {observe: "response"});
   }
 
 }
