@@ -38,6 +38,7 @@ export class AddBlogService {
     formData.append('_id', data._id);
     formData.append('description', data.description);
     formData.append('file', data.imagePath);
+    formData.append('cloudImagPath', data.cloudeImage);
     for(let i = 0; i < data.file.length; i++) {
       let file = data.file[i];
       formData.append('image', file[0]);

@@ -17,7 +17,7 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   public file: any[] = [];
   public value = {}
   public base64Image: string | null = null;
-  public blogData = [{description: '', file: ''}];
+  public blogData = [{description: '', file: '', cloudImage: ''}];
   public cloneFiles: any[] = [];
   public removedFiles: any;
   public titleValidation: boolean = false;
@@ -76,6 +76,7 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
 
   updateBlogById() {
     this.blogModel.imagePath = this.blogData.filter(result => result.file.includes('src/uploads')).map(res => res.file).toString();
+    this.blogModel.cloudeImage = this.blogData.map(res => res.cloudImage).toString();
     this.addBlogService.updataBlog(this.blogModel)
     .pipe(takeUntil(this.destroye$))
     .subscribe(result => {
@@ -140,7 +141,7 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   }
 
   addSection() {
-    this.blogData.push({description: '', file: ''});
+    this.blogData.push({description: '', file: '', cloudImage: ''});
     this.removedFiles = '';
   }
 
@@ -151,6 +152,7 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   }
 
   back() {
+    this.blogModel = new BlogModel();
     this.backEmit.emit();
   }
 

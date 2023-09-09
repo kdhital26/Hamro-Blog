@@ -1,6 +1,11 @@
 .main-container {
     img {
         object-fit: contain;
+        height: 420px;
+    }
+
+    .hamro-blog-main-img{
+        width: 900px;
     }
 
     .hb__comments {
@@ -63,5 +68,12 @@
         overflow: hidden;
         color:gray
     }
-  
 }  
+
+::ng-deep table {
+    width: 100% !important;
+     tr:nth-child(1) > td {
+        font-family: 'Montserrat-Bold';
+     }
+}
+

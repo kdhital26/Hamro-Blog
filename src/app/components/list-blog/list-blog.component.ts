@@ -31,7 +31,7 @@ export class ListBlogComponent implements OnInit {
     .subscribe((result: any) => {
       const { body: {data} } = result;
       for(let i = 0; i < data.length; i++){
-        let splitedFile = data[i].file.split(',');
+        let splitedFile = data[i].cloudinaryPath.split(',');
         data[i]['splitedFiles'] = splitedFile;
         data[i]['description'] = data[i]['description'].replace(`${environment.splitTag}`, ' ');
       }

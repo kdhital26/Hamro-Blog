@@ -4,7 +4,8 @@ export class BlogModel {
         public description?: string,
         public file?: any[],
         public _id?: string | undefined,
-        public imagePath?: string| null
+        public imagePath?: string| null,
+        public cloudeImage?: string| null
     ) {
         this.description = description;
         this.file = file;

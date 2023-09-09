@@ -13,7 +13,7 @@
                     </div>
                     <ng-container *ngFor="let b of blogData?.value; let i = index;">
                         <div class="hamro-blog-main-img main-container mt-2">
-                            <img class="w-100" src="{{filePath}}{{b.file}}" alt="books here"  width="1300" height="400" />
+                            <img class="w-100" src="{{b.cloudImage}}" alt="Loading..." />
                             <section class="mt-3" [innerHTML]="b.description">
                             </section>
                         </div>

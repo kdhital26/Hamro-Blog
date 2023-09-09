@@ -38,7 +38,7 @@ export class SharedComponent implements OnInit {
       const {body: {data}} = result;
       for(let i = 0; i < data.length; i++) {
         data[i].description = data[i].description.split(environment.splitTag);
-        data[i].imagePath = data[i].file.split(',');
+        data[i].imagePath = data[i].cloudinaryPath.split(',');
       }
       this.blogList = data;
       this.getAllTopic();
@@ -73,7 +73,11 @@ export class SharedComponent implements OnInit {
     if(type === 'trendingTopic') {
       this.blogContent = data;
     } else if(type === 'getLatest') {
+      for(let i = 0; i < data.length; i++) {
+        data[i].imagePath = data[i].cloudinaryPath.split(',');
+      }
       this.latestTopic = data;
+
       console.log(this.latestTopic, 'top')
     }
    }
