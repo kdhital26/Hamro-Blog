@@ -10,6 +10,7 @@ export class ButtonComponent implements OnInit {
   @Output() eventEmit = new EventEmitter<any>();
   @Input() addClass: string | undefined;
   @Input() style: any = {};
+  @Input() disabled = false
 
   constructor() { }
 

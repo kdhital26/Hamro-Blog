@@ -1,0 +1,58 @@
+@mixin content {
+    max-width: 600px;
+    min-width: 400px;
+    border-radius: 8px;
+}
+$main-color: #4675c6;
+
+img{
+    width: 150px;
+    object-fit: contain;
+}
+
+.container {
+    .hb-aside-trending{
+        @include content;
+        box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.4);;
+
+    }
+
+    .hb__sections{
+        margin: 0px;
+        padding:13px;
+        cursor: pointer;
+        label{
+            margin-right: 23px;
+            margin-left:12px;
+            cursor: pointer;
+        }
+
+        label:hover{
+            color: $main-color;
+        }
+    }
+
+    .list-group {
+        cursor: pointer;
+        .hb_aside-trending{
+            color: $main-color;
+        }
+        .list-group-item:hover {
+            color:$main-color
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .hb__lable-wrapper, .hb__sections, .hb {
+        display: grid !important;
+    }
+    
+}
+
+
+
+
+
+
+

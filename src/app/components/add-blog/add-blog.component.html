@@ -7,9 +7,23 @@
             <input type="text" placeholder="Add Title..." [ngClass]="{'border border-danger': titleValidation}" name="title" [(ngModel)]="blogModel.title" class="form-control" name="Title" />
         </div>
         <div>
+            <label for="heading">Category</label>
+            <select class="form-control" name="category" [(ngModel)]="blogModel.category">
+                <option value="'business'">Business</option>
+                <option value="'technology'">Technology</option>
+                <option value="'health'">Health</option>
+                <option value="'sport'">Sport</option>
+                <option value="'education'">Education</option>
+                <option value="'news'">News</option>
+            </select>
+        </div>
+        <div>
             <app-button (eventEmit)="addSection()" [btnLable]="'Add Section'"></app-button>
 
         </div>
+
+        
+
         <ng-container *ngFor="let data of blogData; let i = index">
             <div *ngIf="!data.file" class="hb_image-type" (click)="file.click()">
                 <div class="d-flex flex-direction">

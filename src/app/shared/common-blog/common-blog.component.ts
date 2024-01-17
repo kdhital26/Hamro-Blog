@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { CommentModel, RatingModel } from 'src/app/components/models/rating.model';
 import { AddBlogService } from 'src/app/components/services/add-blog.service';
@@ -29,6 +29,8 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private activateRoute: ActivatedRoute,
     private blogService: AddBlogService,
+    private route: Router,
+
   ) { }
   
   ngOnInit(): void {
@@ -70,6 +72,7 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
       this.loadError(error)
     })
   }
+  disabled = false
 
   createComments() {
     if(!this.comment) return;
@@ -114,6 +117,7 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
   loadError(error: HttpErrorResponse) {
     console.log(error);
   }
+
 
   ngOnDestroy(): void {
     this.destroyed$.next(false);

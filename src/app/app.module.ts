@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { SharedComponent } from './shared/shared-component/shared.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ContentComponent } from './content/content.component';
+import { AppMainSharedModule } from './components/shared/button/main-shared.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MenuComponent,
     SubMenuComponent,
     SharedComponent,
+    ContentComponent,
     // FooterComponent
   ],
   imports: [
@@ -26,7 +29,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CKEditorModule
+    CKEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

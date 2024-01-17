@@ -16,6 +16,7 @@ export class AddBlogService {
   readonly getAllRatingUrl: string = `${environment.apiUrl}getAllRating`;
   readonly getAllTrendingTopicUrl: string = `${environment.apiUrl}getAllTrendingTopic`;
   readonly getLatesTopicUrl: string = `${environment.apiUrl}getLatest`;
+  readonly getBlogByContentByUrl: string = `${environment.apiUrl}getBlogByContent`;
   
   constructor(
     private http: HttpClient
@@ -24,7 +25,8 @@ export class AddBlogService {
   addBlog(data: any) {
     const formData = new FormData();
     formData.append('title', data.title);
-    formData.append('description', data.description)
+    formData.append('description', data.description);
+    formData.append('category', data.category);
     for(let i = 0; i < data.file.length; i++) {
       let file = data.file[i];
       formData.append('image', file[0]);
@@ -39,6 +41,8 @@ export class AddBlogService {
     formData.append('description', data.description);
     formData.append('file', data.imagePath);
     formData.append('cloudImagPath', data.cloudeImage);
+    formData.append('category', data.category);
+
     for(let i = 0; i < data.file.length; i++) {
       let file = data.file[i];
       formData.append('image', file[0]);
@@ -52,10 +56,10 @@ export class AddBlogService {
    return this.http.post(this.deleteBlogUrl, formData, {observe: 'response'});
   }
 
-  getIPAddress()
-  {
-    return this.http.get("http://api.ipify.org/?format=json");
-  }
+  // getIPAddress()
+  // {
+  //   return this.http.get("http://api.ipify.org/?format=json");
+  // }
 
   getAllBlogs() {
     return this.http.get(this.getAllBlogUrl, {observe: 'response'});
@@ -85,6 +89,10 @@ export class AddBlogService {
 
   getLatestTopic(commonModel: any) {
     return this.http.post(this.getLatesTopicUrl, commonModel, {observe: "response"});
+  }
+
+  getBlogByContent(category:string) {
+    return this.http.post(this.getBlogByContentByUrl, category, {observe: 'response'});
   }
 
 }

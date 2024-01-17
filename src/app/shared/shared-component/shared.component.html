@@ -24,28 +24,29 @@
         </div>
 
         <!-- aside content -->
-
         <aside id="child" class="right-0">
             <div class="hb__aside-content">
                 <div class="">
                     <div class="vr position-fixed"> </div>
                     <!-- latest blog -->
-                <div class="hb__lates-blog mr-4 d-flex justify-content-center text-center">
-                    <label for="latestBlog">Latest Blog</label>
-                </div>
-                <hr />
-    
-                <div class="topic-container hb-lt__wrapper">
-                    <div (click)="gotoBlog(content)" class="lb" *ngFor="let content of latestTopic; let i = index;">
-                        <img class="" id="hb-latest__img" src={{content.imagePath[0]}} alt="books here" />
-                        <label >
-                           {{content.title}}
-                        </label>
+                    <div class="hb__latest-blog">
+                        <div class="hb__lates-blog mr-4 d-flex justify-content-center text-center">
+                            <label for="latestBlog">Latest Blog</label>
+                        </div>
+            
+                        <div class="topic-container hb-lt__wrapper mt-3">
+                            <div (click)="gotoBlog(content)" class="lb" *ngFor="let content of latestTopic; let i = index;">
+                                <img class="" id="hb-latest__img" src={{content.imagePath[0]}} alt="books here" />
+                                <label>
+                                   {{content.title}}
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                </div>
     
                 <hr />
-    
+                <!-- trending content here -->
+                <div class="hb__trending">
                     <div class="mr-4 d-flex justify-content-center text-center">
                         <label class="topic-lable" for="top-topic">Trending Topic</label>
                     </div>
@@ -57,8 +58,10 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <hr />
-    
+
+                <!-- Recommended topic -->
                 <div class="hb-recomanded_topic">
                     <div class="d-flex justify-content-center">
                         <label>Recommended topics</label>

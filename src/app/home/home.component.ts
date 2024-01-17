@@ -24,19 +24,6 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.mutationProcess();
-  }
-
-  mutationProcess() {
-    // let mutationObject = {...this.object} // shawllo copy
-     let mutationObject = JSON.parse(JSON.stringify(this.object)) // deep copy
-
-    this.object.firstName = 'Shyam',
-    this.object.address.addressLine1 = 'Phokhara'
-    this.object.address.person.fatherName = 'RAM'
-    console.log(this.object, '1st');
-    console.log(mutationObject, '2nd');
-
   }
 
 }

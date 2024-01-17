@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainModule } from '../app/components/main.module';
+import { ContentComponent } from './content/content.component';
 import { HomeComponent } from './home/home.component';
 import { CommonBlogComponent } from './shared/common-blog/common-blog.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'shared', component: CommonBlogComponent},
+  {path: 'content', component: ContentComponent},
   {
     path: 'blog',
     loadChildren: () => import('../app/shared/shared.module').then(m => m.SharedModule)

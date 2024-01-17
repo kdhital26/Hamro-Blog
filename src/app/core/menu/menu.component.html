@@ -1,34 +1,36 @@
 <nav id="mainnav" class="mainnav navbar navbar-expand-lg navbar-light bg-light">
   <ul class="menu">
     <li class="home">
-      <a routerLink="/home" href="index.html">
+      <a routerLink="/home">
         <img height="50" width="50" [src]="'assets/images/hamroblog.png'" />
       </a> 
     </li>
     <li>
-      <a href="case-v1.html">Sports</a>
-      <ul class="submenu">
+      <a href="javascrip:void(0)" (click)="navigateToContent('business')">Business</a>
+    </li>
+    <li>
+      <a href="javascrip:void(0);">Technology</a>
+    </li>
+
+    <li>
+      <a href="javascrip:void(0);">Health</a>
+    </li>
+
+    <li>
+      <a href="javascript:void(0);">Sports</a>
+      <!-- <ul class="submenu">
         <li><a href="case-v1.html">Football</a></li>
         <li><a href="case-v1.html">Cricket</a></li>
-      </ul>
+      </ul> -->
     </li>
     <li>
-      <a href="blog.html">News</a>
-      <ul class="submenu">
+      <a href="javascript(0);;">News</a>
+      <!-- <ul class="submenu">
         <li><a href="blog.html">News V1</a></li>
-      </ul>
+      </ul> -->
     </li>
-    <li>
-      <a href="partner.html">Pages</a>
-      <ul class="submenu">
-        <li><a href="history.html">History</a></li>
-        <li><a href="partner.html">Partner</a></li>
-      </ul>
-    </li>
-    <li><a href="contact.html">Contact Us</a></li>
-    <li><a href="overview.html">About Us</a></li>
-    <li><a href="javascript(0);;" routerLink="/add-blog">Add Blog</a></li>
-
+   
+    <li><a href="javascript(0);;" routerLink="/add-blog">Write</a></li>
   </ul>
   <!-- /.menu -->
 </nav>

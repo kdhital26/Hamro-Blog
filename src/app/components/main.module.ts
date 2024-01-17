@@ -6,13 +6,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ButtonComponent } from './shared/button/button.component';
 import { ListBlogComponent } from './list-blog/list-blog.component';
+import { AppMainSharedModule } from './shared/button/main-shared.module';
 
 
 
 @NgModule({
   declarations: [
     AddBlogComponent,
-    ButtonComponent,
+    // ButtonComponent,
     ListBlogComponent
   ],
   imports: [
@@ -20,9 +21,12 @@ import { ListBlogComponent } from './list-blog/list-blog.component';
     MainRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CKEditorModule
-
-  ]
+    CKEditorModule,
+    AppMainSharedModule
+  ],
+  // exports : [
+  //   ButtonComponent
+  // ]
 })
 export class MainModule { 
 
