@@ -16,6 +16,7 @@ export class ListBlogComponent implements OnInit {
   public filePath = environment.filePath;
   public showBlogView: boolean = false;
   public blogData: any;
+  public showLoader = true;
 
   constructor(
     private blogService: AddBlogService
@@ -26,9 +27,11 @@ export class ListBlogComponent implements OnInit {
   }
 
   getAllBlogLis() {
+    this.showLoader = true;
     this.blogService.getAllBlogs()
     .pipe(takeUntil(this.destroyed$))
     .subscribe((result: any) => {
+      this.showLoader = false;
       const { body: {data} } = result;
       for(let i = 0; i < data.length; i++){
         let splitedFile = data[i].cloudinaryPath.split(',');
@@ -38,6 +41,7 @@ export class ListBlogComponent implements OnInit {
       }
       this.blogListData = data;
     }, error => {
+      this.showLoader = false;
       console.log(error);
     });
   }
