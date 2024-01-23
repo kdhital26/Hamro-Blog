@@ -24,7 +24,9 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   public Editor = ClassicEditor;
   public destroye$ = new Subject<any>();
   public filePath = environment.filePath;
-  public showLoader = true;
+  public showLoader = false;
+  public showBtnLoader = false;
+
 
   constructor(
     private addBlogService: AddBlogService,
@@ -36,6 +38,7 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.showLoader = false;
     if(this.updatedBlogData?._id) {
       this.getBlogById();
     }
@@ -55,11 +58,14 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   }
 
   createBlog() {
+    this.showBtnLoader = true;
     this.addBlogService.addBlog(this.blogModel)
       .pipe(takeUntil(this.destroye$))
       .subscribe(res => {
+        this.showBtnLoader = false;
         this.back();
       }, error => {
+        this.showBtnLoader = false;
         console.log(error);
       })
   }
@@ -82,6 +88,7 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   }
 
   updateBlogById() {
+    this.showBtnLoader = true;
     let imagePath = this.blogData.map(res => res.cloudImage).toString();
     this.blogModel.imagePath = imagePath;
     this.blogModel.cloudeImage = imagePath;
@@ -91,8 +98,10 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
     this.addBlogService.updataBlog(this.blogModel)
     .pipe(takeUntil(this.destroye$))
     .subscribe(result => {
+      this.showBtnLoader = false;
       this.back();
     }, error => {
+      this.showBtnLoader = false;
       console.log(error, 'error here')
     })
   }
