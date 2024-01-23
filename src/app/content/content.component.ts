@@ -10,6 +10,7 @@ import { AddBlogService } from '../components/services/add-blog.service';
 })
 export class ContentComponent implements OnInit {
   public data: any[] = [];
+  showloader = false;
   public responseBody = {
     category: ''
   }
@@ -28,8 +29,10 @@ export class ContentComponent implements OnInit {
 
   
   getAllblogsByContent() {
+    this.showloader = true;
     this.blogService.getBlogByContent(this.responseBody).subscribe(response => {
       console.log(response, 'responese here');
+      this.showloader = false;
       const {body: {data}}: any = response;
       for(let i = 0; i < data?.length; i++){
         let imgPath = data[i]?.cloudinaryPath.split(',');
@@ -40,6 +43,7 @@ export class ContentComponent implements OnInit {
 
 
     }, error => {
+      this.showloader = false;
       console.log(error, 'error here')
     })
   }

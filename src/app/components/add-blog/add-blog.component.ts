@@ -24,7 +24,7 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   public Editor = ClassicEditor;
   public destroye$ = new Subject<any>();
   public filePath = environment.filePath;
-
+  public showLoader = true;
 
   constructor(
     private addBlogService: AddBlogService,
@@ -65,15 +65,18 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   }
 
   getBlogById() {
+    this.showLoader = true;
     this.addBlogService.getBlogById(this.updatedBlogData._id)
     .pipe(takeUntil(this.destroye$))
     .subscribe((result: any) =>{
+      this.showLoader = false;
       const {data : {title, value, _id, category}} = result;
       this.blogModel.title = title;
       this.blogModel._id = _id;
       this.blogData = value;
       this.blogModel.category = category;
     }, error => {
+      this.showLoader = false;
       console.log(error);
     })
   }
