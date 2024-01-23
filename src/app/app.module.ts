@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ContentComponent } from './content/content.component';
 import { AppMainSharedModule } from './components/shared/common/main-shared.module';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AppMainSharedModule } from './components/shared/common/main-shared.modu
     CKEditorModule,
     AppMainSharedModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
