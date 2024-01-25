@@ -1,36 +1,39 @@
-<nav id="mainnav" class="mainnav navbar navbar-expand-lg navbar-light bg-light">
-  <ul class="menu">
-    <li class="home">
-      <a routerLink="/home">
-        <img height="50" width="50" [src]="'assets/images/hamroblog.png'" />
-      </a> 
-    </li>
-    <li>
-      <a href="javascrip:void(0)" (click)="navigateToContent('business')">Business</a>
-    </li>
-    <li>
-      <a href="javascrip:void(0);" (click)="navigateToContent('technology')">Technology</a>
-    </li>
+<header>
+  <div class="logo">
+    <a routerLink="/home">
+      <img src="assets/images/hamroblog.png">
+   </a>
+  </div>
+  <nav>
+      <ul>
+          
+        <li><a href="javascrip:void(0)" (click)="navigateToContent('business')">Business</a></li>
+       
+          <li>
+            <a href="javascrip:void(0);" (click)="navigateToContent('technology')">Technology</a>
+          </li>
+         
+          <li>
+            <a href="javascript:void(0);" (click)="navigateToContent('sport')">Sports</a>
+            <!-- <ul class="submenu">
+              <li><a href="case-v1.html">Football</a></li>
+              <li><a href="case-v1.html">Cricket</a></li>
+            </ul> -->
+          </li>
+          <li>
+            <a href="javascript:void(0);" (click)="navigateToContent('news')">News</a>
+            <!-- <ul class="submenu">
+              <li><a href="blog.html">News V1</a></li>
+            </ul> -->
+          </li>
+          <li>
+            <a href="javascript:void(0);" (click)="navigateToContent('other')">Others</a>
+           
+          </li>
+         
+          <li *ngIf="userName"><a href="javascript(0);;" routerLink="/add-blog">Write</a></li>
 
-    <li>
-      <a href="javascrip:void(0);" (click)="navigateToContent('health')">Health</a>
-    </li>
-
-    <li>
-      <a href="javascript:void(0);" (click)="navigateToContent('sports')">Sports</a>
-      <!-- <ul class="submenu">
-        <li><a href="case-v1.html">Football</a></li>
-        <li><a href="case-v1.html">Cricket</a></li>
-      </ul> -->
-    </li>
-    <li>
-      <a href="javascript:void(0);" (click)="navigateToContent('news')">News</a>
-      <!-- <ul class="submenu">
-        <li><a href="blog.html">News V1</a></li>
-      </ul> -->
-    </li>
-   
-    <li><a href="javascript(0);;" routerLink="/add-blog">Write</a></li>
-  </ul>
-  <!-- /.menu -->
-</nav>
+      </ul>
+  </nav>
+  <div class="menu-icon">&#9776;</div>
+</header>

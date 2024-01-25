@@ -44,22 +44,18 @@
                     <div class="hb__second-section hb-aside-trending">
                         <ul class="list-group">
                             <li class="list-group-item text-center hb_aside-trending"><strong>Recommaned</strong></li>
-                            <li class="list-group-item">Fact About the World War 2 and ongoing war between Hamas and Isreal Fact About the World War 2 and ongoing war between Hamas and Isreal</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li *ngFor="let r of blogList; let i = index" class="list-group-item" (click)="getBlogsById(r)">
+                                {{r.title}}
+                            </li>
                           </ul>
                     </div>
         
                     <div class="hb__second-section hb-aside-trending mt-3 mb-3">
                         <ul class="list-group">
                             <li class="list-group-item text-center hb_aside-trending"><strong>Trending</strong></li>
-                            <li class="list-group-item">Fact About the World War 2 and ongoing war between Hamas and Isreal Fact About the World War 2 and ongoing war between Hamas and Isreal</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li *ngFor="let r of trendingTopic; let i = index" class="list-group-item" (click)="getBlogsById(r)">
+                                {{r.title}}
+                            </li>
                           </ul>
                     </div>
                 </ng-container>
@@ -68,9 +64,10 @@
     
             </div>
         </ng-container>
-       
-
     </div>
+</div>
 
+<div class="hamro__footer">
+<app-footer></app-footer>
 </div>
 

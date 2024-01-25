@@ -13,7 +13,6 @@ import { AppMainSharedModule } from '../components/shared/common/main-shared.mod
 @NgModule({
   declarations: [
     CommonBlogComponent,
-    FooterComponent,
   ],
   imports: [
     CommonModule,
