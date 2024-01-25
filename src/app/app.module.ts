@@ -23,7 +23,7 @@ import { FooterComponent } from './footer/footer.component';
     SubMenuComponent,
     SharedComponent,
     ContentComponent,
-    FooterComponent
+    // FooterComponent
     
   ],
   imports: [
