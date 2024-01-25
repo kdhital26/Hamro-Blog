@@ -29,8 +29,14 @@
         <li><a href="blog.html">News V1</a></li>
       </ul> -->
     </li>
+    <li>
+      <a href="javascript:void(0);" (click)="navigateToContent('other')">Others</a>
+      <!-- <ul class="submenu">
+        <li><a href="blog.html">News V1</a></li>
+      </ul> -->
+    </li>
    
-    <li><a href="javascript(0);;" routerLink="/add-blog">Write</a></li>
+    <li *ngIf="userName"><a href="javascript(0);;" routerLink="/add-blog">Write</a></li>
   </ul>
   <!-- /.menu -->
 </nav>

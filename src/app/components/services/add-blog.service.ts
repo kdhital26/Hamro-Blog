@@ -17,6 +17,7 @@ export class AddBlogService {
   readonly getAllTrendingTopicUrl: string = `${environment.apiUrl}getAllTrendingTopic`;
   readonly getLatesTopicUrl: string = `${environment.apiUrl}getLatest`;
   readonly getBlogByContentByUrl: string = `${environment.apiUrl}getBlogByContent`;
+  readonly getAllBlogsByUserURL: string = `${environment.apiUrl}getBlogsByUser`;
   
   constructor(
     private http: HttpClient
@@ -93,6 +94,12 @@ export class AddBlogService {
 
   getBlogByContent(body:any) {
     return this.http.post(this.getBlogByContentByUrl, body, {observe: 'response'});
+  }
+
+  getAllBlogsByUser() {
+    let loggedInUserDetails: any = sessionStorage.getItem('loggedInUser');
+    let userDetails = JSON.parse(loggedInUserDetails)
+    return this.http.get(this.getAllBlogsByUserURL +`?userName=${userDetails.userName}`, {observe: 'response'});
   }
 
 }
