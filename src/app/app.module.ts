@@ -13,6 +13,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ContentComponent } from './content/content.component';
 import { AppMainSharedModule } from './components/shared/common/main-shared.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     SubMenuComponent,
     SharedComponent,
     ContentComponent,
-    // FooterComponent
+    FooterComponent
+    
   ],
   imports: [
     FormsModule,

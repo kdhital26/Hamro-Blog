@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { AppService } from 'src/app/shared/service/app.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,13 +8,32 @@ import { NavigationEnd, NavigationError, NavigationStart, Router } from '@angula
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
+  loggedInUserId: string = '';
+  userName: string = ''
   constructor(
     private router: Router,
-    private cd: ChangeDetectorRef
-  ) { }
+    private cd: ChangeDetectorRef,
+    private appService: AppService
+  ) {
+    let queryParams = location.search;
+    let split = queryParams.split('loggedInUser=');
+    if(split[1]){
+      this.loggedInUserId = split[1]
+      this.getUser();
+    }
+   }
 
   ngOnInit(): void {
+    this.userName = this.appService.getUserDetails().userName;
+  }
+
+  getUser() {
+    this.appService.getUserByLoggedInId(this.loggedInUserId).subscribe((res: any) => {
+      const {body: { users }} = res;
+      sessionStorage.setItem('loggedInUser', JSON.stringify(users));
+    }, error => {
+      console.log(error)
+    })
   }
 
   navigateToContent(type: string) {

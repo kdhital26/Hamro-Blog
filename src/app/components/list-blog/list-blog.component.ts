@@ -28,7 +28,7 @@ export class ListBlogComponent implements OnInit {
 
   getAllBlogLis() {
     this.showLoader = true;
-    this.blogService.getAllBlogs()
+    this.blogService.getAllBlogsByUser()
     .pipe(takeUntil(this.destroyed$))
     .subscribe((result: any) => {
       this.showLoader = false;
