@@ -11,7 +11,7 @@ import { SharedComponent } from './shared/shared-component/shared.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ContentComponent } from './content/content.component';
-import { AppMainSharedModule } from './components/shared/button/main-shared.module';
+import { AppMainSharedModule } from './components/shared/common/main-shared.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { AppMainSharedModule } from './components/shared/button/main-shared.modu
     AppRoutingModule,
     HttpClientModule,
     CKEditorModule,
+    AppMainSharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

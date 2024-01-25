@@ -9,8 +9,11 @@ import { AddBlogService } from '../components/services/add-blog.service';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-  public category: string = '';
   public data: any[] = [];
+  showloader = false;
+  public responseBody = {
+    category: ''
+  }
   constructor(
     private activateRoute: ActivatedRoute,
     private blogService: AddBlogService,
@@ -20,13 +23,16 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
     const { type } = this.activateRoute.snapshot.queryParams;
-    this.category = type;
+    this.responseBody.category = type;
     this.getAllblogsByContent();
   }
 
+  
   getAllblogsByContent() {
-    this.blogService.getBlogByContent(this.category).subscribe(response => {
+    this.showloader = true;
+    this.blogService.getBlogByContent(this.responseBody).subscribe(response => {
       console.log(response, 'responese here');
+      this.showloader = false;
       const {body: {data}}: any = response;
       for(let i = 0; i < data?.length; i++){
         let imgPath = data[i]?.cloudinaryPath.split(',');
@@ -37,6 +43,7 @@ export class ContentComponent implements OnInit {
 
 
     }, error => {
+      this.showloader = false;
       console.log(error, 'error here')
     })
   }

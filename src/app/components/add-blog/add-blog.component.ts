@@ -17,14 +17,14 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   public file: any[] = [];
   public value = {}
   public base64Image: string | null = null;
-  public blogData = [{description: '', file: '', cloudImage: ''}];
+  public blogData = [{description: '', file: '', cloudImage: '', class: ''}];
   public cloneFiles: any[] = [];
   public removedFiles: any;
   public titleValidation: boolean = false;
   public Editor = ClassicEditor;
   public destroye$ = new Subject<any>();
   public filePath = environment.filePath;
-
+  public showLoader = true;
 
   constructor(
     private addBlogService: AddBlogService,
@@ -42,11 +42,15 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   }
 
   addBlog(value?: any) {
-    this.settingUpValues();
-    if(this.updatedBlogData?._id) {
-      this.updateBlogById()
-    } else {
-      this.createBlog();
+    if(!this.isTitlepresent()) {
+      if(this.isFileUpload()) {
+        this.settingUpValues();
+        if(this.updatedBlogData?._id) {
+          this.updateBlogById()
+        } else {
+          this.createBlog();
+        }
+      }
     }
   }
 
@@ -61,26 +65,32 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   }
 
   getBlogById() {
+    this.showLoader = true;
     this.addBlogService.getBlogById(this.updatedBlogData._id)
     .pipe(takeUntil(this.destroye$))
     .subscribe((result: any) =>{
-      console.log('here result', result);
-      const {data : {title, value, _id}} = result;
+      this.showLoader = false;
+      const {data : {title, value, _id, category}} = result;
       this.blogModel.title = title;
       this.blogModel._id = _id;
       this.blogData = value;
+      this.blogModel.category = category;
     }, error => {
+      this.showLoader = false;
       console.log(error);
     })
   }
 
   updateBlogById() {
-    this.blogModel.imagePath = this.blogData.filter(result => result.file.includes('src/uploads')).map(res => res.file).toString();
-    this.blogModel.cloudeImage = this.blogData.map(res => res.cloudImage).toString();
+    let imagePath = this.blogData.map(res => res.cloudImage).toString();
+    this.blogModel.imagePath = imagePath;
+    this.blogModel.cloudeImage = imagePath;
+    if(this.setIndex?.length) {
+      this.blogModel.count = [...new Set(this.setIndex)];
+    }
     this.addBlogService.updataBlog(this.blogModel)
     .pipe(takeUntil(this.destroye$))
     .subscribe(result => {
-      console.log(result, 'result here');
       this.back();
     }, error => {
       console.log(error, 'error here')
@@ -88,24 +98,38 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   }
 
   settingUpValues() {
-    let description = ''
-    for(let i = 0; i < this.blogData?.length; i++) {
-      description += this.blogData[i].description + '--SPLIT_HERE--';
-    }
-    this.blogModel.description = description;
-    this.blogModel.file = this.file;
-    console.log(this.blogData, 'value here');
-    if(!this.blogModel.title) {
-      this.titleValidation = true;
-      return
-    } else{
+
+      this.blogData.forEach((res: any) => {
+        res['class'] = 'hb__primary'
+      });
+      let description = ''
+      for(let i = 0; i < this.blogData?.length; i++) {
+        description += this.blogData[i].description + '--SPLIT_HERE--';
+      }
+      this.blogModel.description = description;
+      this.blogModel.file = this.file;
+  }
+
+  isTitlepresent(): boolean {
+    let title = this.blogModel.title;
+    if(title) {
       this.titleValidation = false;
+      return false;
+    } else {
+      this.titleValidation = true;
+      return true;
     }
   }
 
-
-  
-
+  isFileUpload(): boolean {
+    let hasFilledAllValue: any = this.blogData.filter(res => {return !res.file});
+    if(hasFilledAllValue?.length) {
+      hasFilledAllValue[0]['class'] = 'border border-danger';
+      return false;
+    } else {
+      return true
+    }
+  }
 
   selectFiles(file: any, i: number) {
     if(!this.file.length) {
@@ -135,20 +159,31 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
     reader.onload = () => {
       this.base64Image = reader.result as string;
       this.blogData[i].file = this.base64Image;
-
     };
     reader.readAsDataURL(file);
   }
 
   addSection() {
-    this.blogData.push({description: '', file: '', cloudImage: ''});
+    this.blogData.push({description: '', file: '', cloudImage: '', class: ''});
     this.removedFiles = '';
   }
 
+  public index: number = -1;
+  public setIndex: any[] = [];
   removeImg(i: number) {
+    this.index = i;
     this.blogData[i].file = '';
     this.file.splice(i, 1);
-    this.removedFiles = this.file[i][0]?.name;
+    // this.removedFiles = this.file[i][0]?.name;
+    this.blogData[i].cloudImage = '';
+    this.setIndex.push(i);
+  }
+
+  removeSection(i: number) {
+    this.blogData[i].file = '';
+    this.blogData[i].cloudImage = '';
+    this.blogData.splice(i, 1);
+
   }
 
   back() {
