@@ -26,6 +26,9 @@ export class MenuComponent implements OnInit, OnChanges, AfterViewInit {
       this.userName = loggedInUserName ? loggedInUserName : '';
     }
    }
+  isMenuOpen = false;
+
+ 
 
   ngOnInit(): void {
    
@@ -48,10 +51,16 @@ export class MenuComponent implements OnInit, OnChanges, AfterViewInit {
     })
   }
 
+  
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
   navigateToContent(type: string) {
     this.cd.detectChanges();
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.navigate([`/content`], {queryParams: {type: type}});
+    this.router.navigate(['/content'], { queryParams: { type: type } });
   }
-
 }
