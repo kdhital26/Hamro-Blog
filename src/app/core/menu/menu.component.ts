@@ -1,3 +1,4 @@
+// menu.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,17 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  isMenuOpen = false;
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  navigateToContent(type: string) {
-    this.router.navigate([`/content`], {queryParams: {type: type}});
-
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
+  navigateToContent(type: string) {
+    this.router.navigate(['/content'], { queryParams: { type: type } });
+  }
 }

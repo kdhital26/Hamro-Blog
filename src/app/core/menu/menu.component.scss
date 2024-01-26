@@ -1,5 +1,5 @@
 header {
-    background-color:hsl(218, 45%, 58%);
+    background-color:#6487c4;
     color: #fff;
     padding: 10px 20px;
     display: flex;
@@ -8,7 +8,7 @@ header {
 }
 
 .logo img {
-    height: 50px; 
+    height: 45px; 
     
 }
 
@@ -59,12 +59,54 @@ nav a:hover::after {
 
 @media only screen and (max-width: 600px) {
     nav {
-        display: none; 
-    }
+      display: none;
+      position: absolute;
+      top: 65px;
+      left: 52%;
+      transform: translateX(-50%) translateY(-100%);
+      background-color: hsl(218, 45%, 58%);
 
+      z-index: 1;
+      opacity: 0;
+      width: 75%; 
+      transition: opacity 0.5s ease, transform 0.9s ease;
+    }
+  
+    nav::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%; 
+        height: 2px; 
+        background-color: rgb(255, 0, 106); 
+      }
+      
+    nav.active {
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  
+    nav.active ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    nav.active li {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
     .menu-icon {
-        display: block; 
+      display: block;
     }
-
-    /* add more styles for mobile menu */
-}
+  
+    header {
+      position: relative;
+    }
+  }
+  
+  

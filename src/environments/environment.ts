@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:2000/api/',
-  filePath: 'http://localhost:2000/',
-  // apiUrl: 'https://hamro-blog.onrender.com/api/',
-  // filePath: 'https://hamro-blog.onrender.com/',
+   filePath: 'http://localhost:2000/',
+   // apiUrl: 'https://hamro-blog.onrender.com/api/',
+   // filePath: 'https://hamro-blog.onrender.com/',
   splitTag: '--SPLIT_HERE--'
 };
 
