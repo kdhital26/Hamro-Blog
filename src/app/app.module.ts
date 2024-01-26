@@ -11,7 +11,9 @@ import { SharedComponent } from './shared/shared-component/shared.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ContentComponent } from './content/content.component';
-import { AppMainSharedModule } from './components/shared/button/main-shared.module';
+import { AppMainSharedModule } from './components/shared/common/main-shared.module';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { AppMainSharedModule } from './components/shared/button/main-shared.modu
     SharedComponent,
     ContentComponent,
     // FooterComponent
+    
   ],
   imports: [
     FormsModule,
@@ -30,8 +33,9 @@ import { AppMainSharedModule } from './components/shared/button/main-shared.modu
     AppRoutingModule,
     HttpClientModule,
     CKEditorModule,
+    AppMainSharedModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

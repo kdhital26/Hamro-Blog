@@ -6,6 +6,15 @@
         </div>
 
         <div class="col-md-8">
+            <!-- loader starts here -->
+            <ng-container *ngIf="!blogList.length">
+                <div class="mt-2" *ngFor="let l of loaderCount;">
+                    <app-loader [contentStyle]="{height: '250px'}"></app-loader>
+                    <app-loader [contentStyle]="{'margin-top': '-26px'}"></app-loader>
+                </div>
+            </ng-container>
+            <!-- loader starts here -->
+
             <ng-container *ngFor="let blog of blogList; let i = index;">
                 <div class="w-90" (click)="gotoBlog(blog)">
                     <div class=" d-flex justify-content-center text-center hamro-blog-heading">
@@ -28,8 +37,18 @@
             <div class="hb__aside-content">
                 <div class="">
                     <div class="vr position-fixed"> </div>
+
+                    <!-- loader starts here -->
+                    <ng-container *ngIf="!latestTopic.length">
+                        <div *ngFor="let l of [1, 2, 3];">
+                            <app-loader [contentStyle]="{height: '50px'}"></app-loader>
+                            <app-loader [contentStyle]="{'margin-top': '-26px'}"></app-loader>
+                        </div>
+                    </ng-container>
+                    <!-- loader starts here -->
+
                     <!-- latest blog -->
-                    <div class="hb__latest-blog">
+                    <div class="hb__latest-blog" *ngIf="latestTopic.length">
                         <div class="hb__lates-blog mr-4 d-flex justify-content-center text-center">
                             <label for="latestBlog">Latest Blog</label>
                         </div>
@@ -43,20 +62,31 @@
                             </div>
                         </div>
                     </div>
+                    <!-- latest blog ends here -->
     
                 <hr />
                 <!-- trending content here -->
                 <div class="hb__trending">
-                    <div class="mr-4 d-flex justify-content-center text-center">
-                        <label class="topic-lable" for="top-topic">Trending Topic</label>
-                    </div>
-                    <div class="topic-container mt-3">
-                        <div class="" *ngFor="let content of blogContent; let i = index;">
-                            <label (click)="gotoBlog(content)">
-                               {{content.title}}
-                            </label>
+                    <!-- trending loader starts here -->
+                    <ng-container *ngIf="!blogContent.length">
+                        <div *ngFor="let l of [1, 2, 3];">
+                            <app-loader [contentStyle]="{height: '50px'}"></app-loader>
+                            <app-loader [contentStyle]="{'margin-top': '-26px'}"></app-loader>
                         </div>
-                    </div>
+                    </ng-container>
+                    <!-- loader starts here -->
+                    <ng-container *ngIf="blogContent.length">
+                        <div class="mr-4 d-flex justify-content-center text-center">
+                            <label class="topic-lable" for="top-topic">Trending Topic</label>
+                        </div>
+                        <div class="topic-container mt-3">
+                            <div class="" *ngFor="let content of blogContent; let i = index;">
+                                <label (click)="gotoBlog(content)">
+                                   {{content.title}}
+                                </label>
+                            </div>
+                        </div>
+                    </ng-container>
                 </div>
                 </div>
                 <hr />
@@ -95,7 +125,6 @@
         </aside>
 
         <!-- aside content ends here -->
-
-
     </div>
 </div>
+

@@ -17,6 +17,7 @@ export class AddBlogService {
   readonly getAllTrendingTopicUrl: string = `${environment.apiUrl}getAllTrendingTopic`;
   readonly getLatesTopicUrl: string = `${environment.apiUrl}getLatest`;
   readonly getBlogByContentByUrl: string = `${environment.apiUrl}getBlogByContent`;
+  readonly getAllBlogsByUserURL: string = `${environment.apiUrl}getBlogsByUser`;
   
   constructor(
     private http: HttpClient
@@ -42,7 +43,7 @@ export class AddBlogService {
     formData.append('file', data.imagePath);
     formData.append('cloudImagPath', data.cloudeImage);
     formData.append('category', data.category);
-
+    formData.append('count', data.count);
     for(let i = 0; i < data.file.length; i++) {
       let file = data.file[i];
       formData.append('image', file[0]);
@@ -91,8 +92,14 @@ export class AddBlogService {
     return this.http.post(this.getLatesTopicUrl, commonModel, {observe: "response"});
   }
 
-  getBlogByContent(category:string) {
-    return this.http.post(this.getBlogByContentByUrl, category, {observe: 'response'});
+  getBlogByContent(body:any) {
+    return this.http.post(this.getBlogByContentByUrl, body, {observe: 'response'});
+  }
+
+  getAllBlogsByUser() {
+    let loggedInUserDetails: any = sessionStorage.getItem('loggedInUser');
+    let userDetails = JSON.parse(loggedInUserDetails)
+    return this.http.get(this.getAllBlogsByUserURL +`?userName=${userDetails.userName}`, {observe: 'response'});
   }
 
 }

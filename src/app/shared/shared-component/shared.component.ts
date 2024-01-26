@@ -14,6 +14,7 @@ import { CommenModel } from '../model/common.model';
 export class SharedComponent implements OnInit {
   public destroye$ = new Subject<any>();
   public blogList: any[] = [];
+  public loaderCount = [1,2,3,4,5];
   public filePath: string = environment.filePath;
   public commonModel = new CommenModel();
   constructor(

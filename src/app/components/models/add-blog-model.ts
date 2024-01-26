@@ -6,7 +6,8 @@ export class BlogModel {
         public _id?: string | undefined,
         public imagePath?: string| null,
         public cloudeImage?: string| null,
-        public category?: string | 'other'
+        public category?: string | 'other',
+        public count?: any[]
     ) {
         this.description = description;
         this.file = file;
@@ -14,5 +15,6 @@ export class BlogModel {
         this._id = _id;
         this.imagePath = imagePath;
         this.category = category?.toLowerCase() || 'other';
+        this.count =count ? count : [];
     }
 }
