@@ -21,12 +21,13 @@ export class SharedComponent implements OnInit {
     private route: Router,
     private activateRoute: ActivatedRoute,
     private addBlogService: AddBlogService,
-  ) { }
+  ) {
+    this.getLatesTopic();
+   }
   blogContent: any[] = []
   latestTopic: any[] = []
   ngOnInit(): void {
     this.getAllBlogs();
-    this.getLatesTopic();
     this.getAllTopic();
   }
 
