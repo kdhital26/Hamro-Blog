@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { AppService } from 'src/app/shared/service/app.service';
 
@@ -7,9 +7,10 @@ import { AppService } from 'src/app/shared/service/app.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnChanges, AfterViewInit {
   loggedInUserId: string = '';
   userName: string = ''
+  showMenu = false;
   constructor(
     private router: Router,
     private cd: ChangeDetectorRef,
@@ -20,17 +21,28 @@ export class MenuComponent implements OnInit {
     if(split[1]){
       this.loggedInUserId = split[1]
       this.getUser();
+    } else {
+      let loggedInUserName = this.appService.getUserDetails()?.userName;
+      this.userName = loggedInUserName ? loggedInUserName : '';
     }
    }
 
   ngOnInit(): void {
-    this.userName = this.appService.getUserDetails().userName;
+   
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    
+  }
+
+  ngAfterViewInit(): void {
+    
   }
 
   getUser() {
     this.appService.getUserByLoggedInId(this.loggedInUserId).subscribe((res: any) => {
       const {body: { users }} = res;
       sessionStorage.setItem('loggedInUser', JSON.stringify(users));
+      this.userName = users.userName;
     }, error => {
       console.log(error)
     })

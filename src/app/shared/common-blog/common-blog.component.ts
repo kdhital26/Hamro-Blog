@@ -19,6 +19,7 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
   comment: string  = '';
   filePath = environment.filePath;
   comments: any[] = [];
+  showloader = true;
   starRating = [
     {setRating: false, number: 1},
     {setRating: false, number: 2},
@@ -45,9 +46,11 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getBlog() {
+    this.showloader = true;
     this.blogService.getBlogById(this._id)
     .pipe(takeUntil(this.destroyed$))
     .subscribe((result: any) => {
+      this.showloader = false;
       const { data, comments } = result;
       if(data) {
         this.blogData = data;
@@ -61,15 +64,16 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
 
   }
  
-
+  isRateSet = false;
   saveRating(value: number) {
     let ratingModel = new RatingModel(this._id, value);
     this.blogService.setRating(ratingModel)
     .pipe(takeUntil(this.destroyed$))
     .subscribe(result => {
-      console.log(result);
+      this.isRateSet = true;
     }, error => {
-      this.loadError(error)
+      this.loadError(error);
+      this.isRateSet = false;
     })
   }
   disabled = false
@@ -101,6 +105,7 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   setRating(rating: number) {
+    this.isRateSet = true;
     this.starRating.forEach(element => {
         element.setRating = false;
     });
@@ -115,7 +120,7 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   loadError(error: HttpErrorResponse) {
-    console.log(error);
+    this.showloader = false;
   }
 
 
