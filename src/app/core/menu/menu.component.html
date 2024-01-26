@@ -35,7 +35,7 @@
         </ul> -->
       </li>
      
-      <li><a href="javascript:void(0);" routerLink="/add-blog">Write</a></li>
+      <li *ngIf="userName"><a href="javascript:void(0);" routerLink="/add-blog">Write</a></li>
     </ul>
   </nav>
   <div class="menu-icon" (click)="toggleMenu()">&#9776;</div>
