@@ -25,8 +25,9 @@ export class SharedComponent implements OnInit {
   blogContent: any[] = []
   latestTopic: any[] = []
   ngOnInit(): void {
-
     this.getAllBlogs();
+    this.getLatesTopic();
+    this.getAllTopic();
   }
 
   /*
@@ -42,8 +43,6 @@ export class SharedComponent implements OnInit {
         data[i].imagePath = data[i].cloudinaryPath.split(',');
       }
       this.blogList = data;
-      this.getAllTopic();
-      this.getLatesTopic();
     }, error => {
       console.log(error);
     })
