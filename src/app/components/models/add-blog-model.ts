@@ -1,4 +1,6 @@
-export class BlogModel {
+import { AppBaseModel } from "./app-base-model";
+
+export class BlogModel extends AppBaseModel{
     constructor(
         public title?: string,
         public description?: string,
@@ -7,8 +9,10 @@ export class BlogModel {
         public imagePath?: string| null,
         public cloudeImage?: string| null,
         public category?: string | 'other',
-        public count?: any[]
+        public count?: any[],
+        public loggedInUser?: string
     ) {
+        super();
         this.description = description;
         this.file = file;
         this.title = title;
@@ -16,5 +20,6 @@ export class BlogModel {
         this.imagePath = imagePath;
         this.category = category?.toLowerCase() || 'other';
         this.count =count ? count : [];
+        this.loggedInUser = this.loggedInUserId;
     }
 }

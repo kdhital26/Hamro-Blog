@@ -98,7 +98,8 @@ export class AddBlogService {
 
   getAllBlogsByUser() {
     let loggedInUserDetails: any = sessionStorage.getItem('loggedInUser');
-    let userDetails = JSON.parse(loggedInUserDetails)
+    let userDetails = JSON.parse(loggedInUserDetails);
+    console.log(userDetails, 'here')
     return this.http.get(this.getAllBlogsByUserURL +`?userName=${userDetails.userName}`, {observe: 'response'});
   }
 

@@ -71,6 +71,11 @@
     .hb__w-90{
         width: 90%;
     }
+
+    .disable__rating{
+        pointer-events: none;
+        opacity: .6;
+    }
 }  
 
 ::ng-deep table {
