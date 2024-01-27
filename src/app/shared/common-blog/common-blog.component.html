@@ -35,16 +35,17 @@
                     <div class="hb__star" [ngClass]="isRateSet ? 'disable__rating': ''">
                         <span *ngFor="let star of starRating; let i = index" (click)="setRating(star.number)" [ngClass]="star.setRating ? 'fa fa-star' : 'fa fa-star-o'"></span>
                     </div>
-        
-                    <div class="hb-textarea">
-                        <textarea name="comment" [(ngModel)]="comment" maxlength="100" class="form-control hb__comments" placeholder="Please type your comments here and Click on Comment, maximum upto 100 charater" ></textarea>
-                    </div>
-        
-                    <div class="mt-2 hb__w-90">
-                        <app-button [style]="comment ? '' : 'pointer-events: none; opacity: 0.6'" [addClass]="'pull-right'" (eventEmit)="createComments()" [btnLable]="'Comment'"></app-button>
-                    </div>
-        
-                    <!-- comments section -->
+
+                    <div class="screen-size-wrapper">
+                        <div class="hb-textarea">
+                            <textarea name="comment" [(ngModel)]="comment" maxlength="100" class="form-control hb__comments" placeholder="Please type your comments here and Click on Comment, maximum upto 100 charater" ></textarea>
+                        </div>
+            
+                        <div class="mt-2 hb__w-90">
+                            <app-button [style]="comment ? '' : 'pointer-events: none; opacity: 0.6'" [addClass]="'pull-right'" (eventEmit)="createComments()" [btnLable]="'Comment'"></app-button>
+                        </div>
+
+                        <!-- comments section -->
                     <div class="hb__cc" *ngIf="comments.length > 0">
                         <strong>{{comments.length > 0 ?  'Comments':  'No Comments Yet'}}</strong>
                         <div class="mt-3 mb-2 " *ngFor="let comment of comments; let i = index;">
@@ -59,6 +60,11 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+        
+                   
+        
+                    
                 </div>
 
                
