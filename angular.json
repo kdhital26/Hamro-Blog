@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "practice": {
+    "hamrovlog": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -154,7 +154,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "practice:build"
+            "browserTarget": "hamrovlog:build"
           }
         },
         "test": {
