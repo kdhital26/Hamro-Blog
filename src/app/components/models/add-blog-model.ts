@@ -20,6 +20,6 @@ export class BlogModel extends AppBaseModel{
         this.imagePath = imagePath;
         this.category = category?.toLowerCase() || 'other';
         this.count =count ? count : [];
-        this.loggedInUser = this.loggedInUserId;
+        this.loggedInUser = this.getUserName();
     }
 }

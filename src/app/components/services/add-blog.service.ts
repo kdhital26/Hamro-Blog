@@ -28,6 +28,8 @@ export class AddBlogService {
     formData.append('title', data.title);
     formData.append('description', data.description);
     formData.append('category', data.category);
+    formData.append('userName', data.loggedInUser);
+
     for(let i = 0; i < data.file.length; i++) {
       let file = data.file[i];
       formData.append('image', file[0]);
@@ -44,6 +46,7 @@ export class AddBlogService {
     formData.append('cloudImagPath', data.cloudeImage);
     formData.append('category', data.category);
     formData.append('count', data.count);
+    formData.append('userName', data.loggedInUser);
     for(let i = 0; i < data.file.length; i++) {
       let file = data.file[i];
       formData.append('image', file[0]);
@@ -99,7 +102,6 @@ export class AddBlogService {
   getAllBlogsByUser() {
     let loggedInUserDetails: any = sessionStorage.getItem('loggedInUser');
     let userDetails = JSON.parse(loggedInUserDetails);
-    console.log(userDetails, 'here')
     return this.http.get(this.getAllBlogsByUserURL +`?userName=${userDetails.userName}`, {observe: 'response'});
   }
 

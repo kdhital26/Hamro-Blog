@@ -7,7 +7,7 @@
 
         <div class="col-md-8">
             <!-- loader starts here -->
-            <ng-container *ngIf="!blogList.length">
+            <ng-container *ngIf="showLoader">
                 <div class="mt-2" *ngFor="let l of loaderCount;">
                     <app-loader [contentStyle]="{height: '250px'}"></app-loader>
                     <app-loader [contentStyle]="{'margin-top': '-26px'}"></app-loader>
@@ -39,7 +39,7 @@
                     <div class="vr position-fixed"> </div>
 
                     <!-- loader starts here -->
-                    <ng-container *ngIf="!latestTopic.length">
+                    <ng-container *ngIf="showLatestTopicLoader">
                         <div *ngFor="let l of [1, 2, 3];">
                             <app-loader [contentStyle]="{height: '50px'}"></app-loader>
                             <app-loader [contentStyle]="{'margin-top': '-26px'}"></app-loader>
@@ -68,7 +68,7 @@
                 <!-- trending content here -->
                 <div class="hb__trending">
                     <!-- trending loader starts here -->
-                    <ng-container *ngIf="!blogContent.length">
+                    <ng-container *ngIf="showTrendingTopicLoader">
                         <div *ngFor="let l of [1, 2, 3];">
                             <app-loader [contentStyle]="{height: '50px'}"></app-loader>
                             <app-loader [contentStyle]="{'margin-top': '-26px'}"></app-loader>
