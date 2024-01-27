@@ -1,13 +1,8 @@
 .main-container {
     img {
-        object-fit: contain;
-        height: 420px;
+        object-fit: contain !important;
+        height: fit-content !important;
     }
-
-    .hamro-blog-main-img{
-        width: 900px;
-    }
-
     .hb__comments {
         width: 90%;
         height: 120px;
@@ -72,11 +67,42 @@
         width: 90%;
     }
 
+    .hb__cb {
+        display: grid;
+        place-content: center;
+    }
+
     .disable__rating{
         pointer-events: none;
         opacity: .6;
     }
 }  
+
+//for mobile screen
+@media (max-width:770px) {
+    .hb__img-section{
+        text-align: center;
+        margin-left: 10px;
+        max-width: 349px;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+
+    .hb__des-content{
+        margin: 15px;
+    }
+}
+
+//for wider screen
+@media (min-width:770px) {
+    .hamro-blog-main-img{
+        width: 900px;
+    }
+}
+
+
+
 
 ::ng-deep table {
     width: 100% !important;
