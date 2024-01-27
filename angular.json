@@ -80,6 +80,14 @@
                  "fonts": false
              }
             },
+            "qa": {
+              "browserTarget": "practice:build:qa",
+              "optimization": {
+                "scripts": true,
+                 "styles": true,
+                 "fonts": false
+             }
+            },
             "development": {
               "browserTarget": "practice:build:development"
             }
