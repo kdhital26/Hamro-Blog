@@ -7,6 +7,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ButtonComponent } from './shared/common/button/button.component';
 import { ListBlogComponent } from './list-blog/list-blog.component';
 import { AppMainSharedModule } from './shared/common/main-shared.module';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -15,6 +16,7 @@ import { AppMainSharedModule } from './shared/common/main-shared.module';
     AddBlogComponent,
     // ButtonComponent,
     ListBlogComponent,
+    UsersComponent,
   ],
   imports: [
     CommonModule,
