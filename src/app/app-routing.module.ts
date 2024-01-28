@@ -14,7 +14,7 @@ const routes: Routes = [
     loadChildren: () => import('../app/shared/shared.module').then(m => m.SharedModule)
   },
   {
-    path: 'add-blog',
+    path: 'blogs',
     loadChildren: () => import('../app/components/main.module').then(m => m.MainModule)
   },
   {path: '', redirectTo: 'home', pathMatch: 'full' },

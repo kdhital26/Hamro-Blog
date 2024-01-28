@@ -9,7 +9,8 @@ import { AppService } from 'src/app/shared/service/app.service';
 })
 export class MenuComponent implements OnInit, OnChanges, AfterViewInit {
   loggedInUserId: string = '';
-  userName: string = ''
+  userName: string = '';
+  email: string = ''
   showMenu = false;
   constructor(
     private router: Router,
@@ -23,7 +24,9 @@ export class MenuComponent implements OnInit, OnChanges, AfterViewInit {
       this.getUser();
     } else {
       let loggedInUserName = this.appService.getUserDetails()?.userName;
+      let email = this.appService.getUserDetails()?.email;
       this.userName = loggedInUserName ? loggedInUserName : '';
+      this.email = email ? email : '';
     }
    }
   isMenuOpen = false;
