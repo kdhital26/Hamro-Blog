@@ -14,6 +14,7 @@ import { ContentComponent } from './content/content.component';
 import { AppMainSharedModule } from './components/shared/common/main-shared.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FooterComponent } from './footer/footer.component';
     SubMenuComponent,
     SharedComponent,
     ContentComponent,
+    LoginComponent,
     // FooterComponent
     
   ],
