@@ -1,23 +1,36 @@
-<div class="wrapper fadeInDown">
-    <div id="formContent">
-      <!-- Tabs Titles -->
-  
-      <!-- Icon -->
-      <div class="fadeIn first">
-        <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
-      </div>
-  
-      <!-- Login Form -->
-      <form class="mt-4">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-        <input type="submit" class="fadeIn fourth" value="Log In">
-      </form>
-  
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
-      </div>
-  
+<div class="container" [ngClass]="{'right-panel-active': isRightPanelActive}">
+    <div class="form-container sign-up-container">
+        <form>
+            <h1>Create Account</h1>
+            <span>use your email for registration</span>
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button>Sign Up</button>
+        </form>
     </div>
-  </div> 
+    <div class="form-container sign-in-container">
+        <form>
+            <h1>Sign in</h1>
+            <span>use your account</span>
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <a href="#">Forgot your password?</a>
+            <button>Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" (click)="togglePanel()">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start the journey with us</p>
+                <button class="ghost" (click)="togglePanel()">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
