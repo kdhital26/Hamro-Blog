@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   
-  // apiUrl: 'http://localhost:2000/api/',
-  //  filePath: 'http://localhost:2000/',
+  apiUrl: 'http://localhost:2000/api/',
+   filePath: 'http://localhost:2000/',
 
   //prodcution server
   //  apiUrl: 'https://hamro-blog.onrender.com/api/',
@@ -14,8 +14,8 @@ export const environment = {
 
    //dev serve 
    //for developer user only
-   apiUrl: 'https://zero426-dev-server.onrender.com/api/',
-   filePath: 'https://zero426-dev-server.onrender.com/',
+  //  apiUrl: 'https://zero426-dev-server.onrender.com/api/',
+  //  filePath: 'https://zero426-dev-server.onrender.com/',
    splitTag: '--SPLIT_HERE--'
 };
 

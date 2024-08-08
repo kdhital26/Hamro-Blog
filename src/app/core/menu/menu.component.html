@@ -1,3 +1,17 @@
+<!-- <div class="d-flex justify-content-between logo-wrapper">
+
+  <div class="logo">
+    <a routerLink="/home">
+      <img src="assets/images/hamrovlog.png">
+    </a>
+  </div>
+
+  <div>
+    <strong>Welcome, Kabin Dhital</strong>
+    <i class="fa fa-user-circle" aria-hidden="true"></i>
+  </div>
+</div> -->
+
 <header>
   <div class="logo">
     <a routerLink="/home">
@@ -42,8 +56,13 @@
       </li>
      
       <li *ngIf="userName"><a href="javascript:void(0);" routerLink="/blogs">Write</a></li>
-      <li><a href="javascript:void(0);" routerLink="/login">Login</a></li>
+      <li *ngIf="!userName"><a href="javascript:void(0);" routerLink="/login">Login</a></li>
       <li *ngIf="email === 'sagar.kabin26@gmail.com'"><a href="javascript:void(0);" routerLink="/blogs/users">Users</a></li>
+      <li [class.hb__username-section]="userName">
+        <!-- <a href="javascript:void(0);" routerLink="/login">Hi, Kabin</a> &nbsp; -->
+        <small *ngIf="!userName" class="fa fa-user-circle" aria-hidden="true"></small>
+        <small class="hb__userName" *ngIf="userName">{{userName}}</small>
+      </li>
     </ul>
   </nav>
   <div class="menu-icon" (click)="toggleMenu()">&#9776;</div>

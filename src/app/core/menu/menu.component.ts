@@ -1,35 +1,36 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { UserService } from 'src/app/components/services/user.service';
 import { AppService } from 'src/app/shared/service/app.service';
+import { LoginService } from 'src/app/shared/service/user.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit, OnChanges, AfterViewInit {
+export class MenuComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   loggedInUserId: string = '';
-  userName: string = '';
+  userName: boolean = false;
   email: string = ''
   showMenu = false;
+  isMenuOpen = false;
+
   constructor(
     private router: Router,
     private cd: ChangeDetectorRef,
-    private appService: AppService
+    private appService: AppService,
+    private userService: LoginService,
   ) {
-    let queryParams = location.search;
-    let split = queryParams.split('loggedInUser=');
-    if(split[1]){
-      this.loggedInUserId = split[1]
-      this.getUser();
-    } else {
-      let loggedInUserName = this.appService.getUserDetails()?.userName;
-      let email = this.appService.getUserDetails()?.email;
-      this.userName = loggedInUserName ? loggedInUserName : '';
-      this.email = email ? email : '';
+    this.userService.loggedInUser$.subscribe((result: any) => {
+       this.userName = result?.fullName;
+       this.email = result?.email;
+    });
+    if(!this.userName) {
+      this.userName = this.appService?.getUserDetails()?.fullName;
+      this.email = this.appService?.getUserDetails()?.email;
     }
    }
-  isMenuOpen = false;
 
  
 
@@ -43,17 +44,6 @@ export class MenuComponent implements OnInit, OnChanges, AfterViewInit {
   ngAfterViewInit(): void {
     
   }
-
-  getUser() {
-    this.appService.getUserByLoggedInId(this.loggedInUserId).subscribe((res: any) => {
-      const {body: { users }} = res;
-      sessionStorage.setItem('loggedInUser', JSON.stringify(users));
-      this.userName = users.userName;
-    }, error => {
-      console.log(error)
-    })
-  }
-
   
 
   toggleMenu() {
@@ -65,5 +55,10 @@ export class MenuComponent implements OnInit, OnChanges, AfterViewInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.navigate([`/content`], {queryParams: {type: type}});
     this.router.navigate(['/content'], { queryParams: { type: type } });
+  }
+
+  ngOnDestroy(): void {
+    this.userService.loggedInUser$.next({});
+    this.userService.loggedInUser$.unsubscribe();
   }
 }

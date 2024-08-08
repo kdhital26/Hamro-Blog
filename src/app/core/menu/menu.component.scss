@@ -107,6 +107,22 @@ nav a:hover::after {
     header {
       position: relative;
     }
+
+   
+  }
+
+  .hb__username-section{
+    border-left: solid #ffffff;
+    .hb__userName{
+      margin-left: 14px;
+    }
+  }
+  
+
+  .logo-wrapper{ 
+    display: flex;
+    justify-content: space-between;
+    padding: 7px;
   }
   
   

@@ -5,8 +5,8 @@ import { environment } from 'src/environments/environment';
 @Injectable({
     providedIn: 'root'
 })
-export class AppService{
-    readonly getUserURL = `${environment.apiUrl}getUsers`
+export class AppService{    
+    readonly getUserURL = `${environment.apiUrl}getUsers`;
     constructor(private http: HttpClient) {
 
     }
@@ -18,7 +18,7 @@ export class AppService{
 
     getUserDetails() {
         let loggedInUserDetails: any = sessionStorage.getItem('loggedInUser');
-        let userDetails = JSON.parse(loggedInUserDetails);
-        return userDetails
+        let loggedInUser = JSON.parse(loggedInUserDetails);
+        return loggedInUser
     }
 }
