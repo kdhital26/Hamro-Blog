@@ -9,6 +9,7 @@ import { User } from "../model/user.model";
 })
 export class LoginService {
     readonly loginURL: string = `${environment.apiUrl}login`;
+    readonly signUpURL: string = `${environment.apiUrl}createUser`;
     public loggedInUser$ = new BehaviorSubject({});
 
     constructor(
@@ -19,5 +20,9 @@ export class LoginService {
 
     login(user: User) {
         return this.http.post(this.loginURL, user, {observe: "response"});
+    }
+
+    signUp(user: User) {
+        return this.http.post(this.signUpURL, user, {observe: 'response'});
     }
 }

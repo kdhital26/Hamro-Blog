@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   
-  apiUrl: 'http://localhost:2000/api/',
+   apiUrl: 'http://localhost:2000/api/',
    filePath: 'http://localhost:2000/',
 
   //prodcution server
