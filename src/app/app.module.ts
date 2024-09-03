@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ContentComponent } from './content/content.component';
 import { AppMainSharedModule } from './components/shared/common/main-shared.module';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 
@@ -37,7 +37,8 @@ import { LoginComponent } from './login/login.component';
     CKEditorModule,
     AppMainSharedModule
   ],
-  providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
+  // providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }], //removing # from production
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }], //adding # from production
   bootstrap: [AppComponent]
 })
 export class AppModule { }
