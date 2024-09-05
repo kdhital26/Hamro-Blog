@@ -18,6 +18,7 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
   blogData: any;
   comment: string  = '';
   filePath = environment.filePath;
+  createdDate = new Date();
   comments: any[] = [];
   showloader = true;
   starRating = [
@@ -52,6 +53,7 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
     .subscribe((result: any) => {
       this.showloader = false;
       const { data, comments } = result;
+      console.log(result, 'result here')
       if(data) {
         this.blogData = data;
         console.log(this.blogData, comments)

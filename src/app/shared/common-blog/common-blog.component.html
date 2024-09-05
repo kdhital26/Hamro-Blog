@@ -22,6 +22,7 @@
                     <div class=" d-flex justify-content-center text-center">
                         <h2>{{blogData?.title}}</h2>
                     </div>
+                    <div class="d-flex user__section"><span style="position: relative; top:5px;" class="fa fa-user-circle">&nbsp;</span>Article By:- &nbsp;Kabin Dhital,  &nbsp; <span class="blogOn">{{blogData.createdAt | date}}</span></div>
                     <ng-container *ngFor="let b of blogData?.value; let i = index;">
                         <div class="hamro-blog-main-img main-container mt-2">
                             <div>

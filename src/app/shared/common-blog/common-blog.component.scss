@@ -1,3 +1,5 @@
+$hover-color:#116D6E;
+
 .main-container {
     img {
         object-fit: contain !important;
@@ -96,6 +98,16 @@
     .screen-size-wrapper{
         margin-left: 50px;
     }
+}
+
+.blogOn{
+    color: $hover-color;
+    
+}
+
+.user__section{
+    justify-content: center;
+    margin: 20px;
 }
 
 //for wider screen
