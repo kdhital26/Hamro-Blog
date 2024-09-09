@@ -53,10 +53,8 @@ export class CommonBlogComponent implements OnInit, OnDestroy, AfterViewInit {
     .subscribe((result: any) => {
       this.showloader = false;
       const { data, comments } = result;
-      console.log(result, 'result here')
       if(data) {
         this.blogData = data;
-        console.log(this.blogData, comments)
         this.comments = comments;
         // this.getAllRatingById();
       }
