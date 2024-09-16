@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MainModule } from '../components/main.module';
 import { ButtonComponent } from '../components/shared/common/button/button.component';
 import { AppMainSharedModule } from '../components/shared/common/main-shared.module';
-
+import { TooltipModule  } from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import { AppMainSharedModule } from '../components/shared/common/main-shared.mod
     CommonModule,
     SharedRouteModule,
     FormsModule,
-    AppMainSharedModule
+    AppMainSharedModule,
+    TooltipModule
   ]
 })
 export class SharedModule { }
