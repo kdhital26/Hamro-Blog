@@ -131,23 +131,23 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "hamrovlog:build:production",
               "optimization": {
                 "scripts": true,
                  "styles": true,
                  "fonts": false
-             }
+            },
+            "buildTarget": "hamrovlog:build:production"
             },
             "qa": {
-              "browserTarget": "hamrovlog:build:qa",
               "optimization": {
                 "scripts": true,
                  "styles": true,
                  "fonts": false
-             }
+            },
+            "buildTarget": "hamrovlog:build:qa"
             },
             "development": {
-              "browserTarget": "hamrovlog:build:development"
+              "buildTarget": "hamrovlog:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -155,7 +155,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hamrovlog:build"
+            "buildTarget": "hamrovlog:build"
           }
         },
         "test": {
