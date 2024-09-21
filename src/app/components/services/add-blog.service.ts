@@ -45,8 +45,9 @@ export class AddBlogService {
     formData.append('file', data.imagePath);
     formData.append('cloudImagPath', data.cloudeImage);
     formData.append('category', data.category);
-    formData.append('count', data.count);
-    formData.append('userName', data.loggedInUser);
+    formData.append('view', data.count);
+    formData.append('userName', data.createdBy);
+    formData.append('commentId', JSON.stringify(data.commentId));
     for(let i = 0; i < data.file.length; i++) {
       let file = data.file[i];
       formData.append('image', file[0]);

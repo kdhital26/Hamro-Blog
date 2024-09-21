@@ -10,7 +10,9 @@ export class BlogModel extends AppBaseModel{
         public cloudeImage?: string| null,
         public category?: string | 'other',
         public count?: any[],
-        public loggedInUser?: string
+        public loggedInUser?: string,
+        public commentId?: any[],
+        public deleteImgCount?: any
     ) {
         super();
         this.description = description;
@@ -21,5 +23,7 @@ export class BlogModel extends AppBaseModel{
         this.category = category?.toLowerCase() || 'other';
         this.count =count ? count : [];
         this.loggedInUser = this.getUserName();
+        this.commentId = commentId;
+        this.deleteImgCount = deleteImgCount;
     }
 }

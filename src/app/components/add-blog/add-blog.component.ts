@@ -76,11 +76,14 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
     .pipe(takeUntil(this.destroye$))
     .subscribe((result: any) =>{
       this.showLoader = false;
-      const {data : {title, value, _id, category}} = result;
-      this.blogModel.title = title;
-      this.blogModel._id = _id;
+      const {data : {title, value, _id, category}, comments} = result;
+      // this.blogModel.title = title;
+      // this.blogModel._id = _id;
       this.blogData = value;
-      this.blogModel.category = category;
+      // this.blogModel.category = category;
+      this.blogModel = result.data;
+      this.blogModel.commentId = comments;
+
     }, error => {
       this.showLoader = false;
       console.log(error);
@@ -93,7 +96,7 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
     this.blogModel.imagePath = imagePath;
     this.blogModel.cloudeImage = imagePath;
     if(this.setIndex?.length) {
-      this.blogModel.count = [...new Set(this.setIndex)];
+      this.blogModel.deleteImgCount = [...new Set(this.setIndex)];
     }
     this.addBlogService.updataBlog(this.blogModel)
     .pipe(takeUntil(this.destroye$))
@@ -107,7 +110,6 @@ export class AddBlogComponent implements OnInit, AfterViewInit {
   }
 
   settingUpValues() {
-
       this.blogData.forEach((res: any) => {
         res['class'] = 'hb__primary'
       });
